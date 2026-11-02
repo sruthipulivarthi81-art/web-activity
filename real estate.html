@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Real Estate Website</title>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f6f9;
+    color: #333;
+}
+header {
+    background: #183153;
+    color: white;
+    padding: 20px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+header h1 {
+    font-size: 27px;
+}
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 10px;
+}
+nav a:hover {
+    color: #ffc857;
+}
+.hero {
+    background: linear-gradient(120deg, #183153, #3977b8);
+    color: white;
+    text-align: center;
+    padding: 65px 20px;
+}
+.hero h2 {
+    font-size: 36px;
+    margin-bottom: 15px;
+}
+.hero p {
+    margin-bottom: 20px;
+}
+button {
+    background: #ffc857;
+    color: #183153;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+button:hover {
+    background: #f0b332;
+}
+.search {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    background: white;
+    padding: 20px;
+    margin: 25px auto;
+    width: 86%;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px #0001;
+}
+input, select {
+    flex: 1;
+    min-width: 150px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+section {
+    padding: 30px 7%;
+}
+.title {
+    text-align: center;
+    color: #183153;
+    margin-bottom: 25px;
+}
+.properties {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+.card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 3px 12px #0001;
+    transition: 0.3s;
+}
+.card:hover {
+    transform: translateY(-5px);
+}
+.card img {
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+}
+.info {
+    padding: 18px;
+}
+.info h3 {
+    color: #183153;
+    margin-bottom: 10px;
+}
+.info p {
+    margin: 10px 0;
+}
+.price {
+    color: #16804a;
+    font-size: 21px;
+    font-weight: bold;
+}
+.info button {
+    width: 100%;
+    background: #183153;
+    color: white;
+}
+.info button:hover {
+    background: #3977b8;
+}
+.about {
+    background: #e4edf7;
+    text-align: center;
+    line-height: 1.8;
+}
+.contact {
+    text-align: center;
+    line-height: 2;
+}
+footer {
+    background: #183153;
+    color: white;
+    text-align: center;
+    padding: 22px;
+}
+#result {
+    text-align: center;
+    color: #16804a;
+    font-weight: bold;
+}
+@media (max-width: 800px) {
+    .properties {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (max-width: 550px) {
+    .properties {
+        grid-template-columns: 1fr;
+    }
+    header {
+        justify-content: center;
+        gap: 15px;
+    }
+    .hero h2 {
+        font-size: 27px;
+    }
+}
+</style>
+</head>
+<body>
+<header>
+<h1>Dream Estate</h1>
+<nav>
+<a href="#home">Home</a>
+<a href="#properties">Properties</a>
+<a href="#about">About</a>
+<a href="#contact">Contact</a>
+</nav>
+</header>
+<div class="hero" id="home">
+<h2>Find Your Dream Property</h2>
+<p>Discover beautiful homes at affordable prices.</p>
+<a href="#properties"><button>Explore Homes</button></a>
+</div>
+<div class="search">
+<input type="text" id="city" placeholder="Enter city">
+<select id="kind">
+<option value="all">All Property Types</option>
+<option value="House">House</option>
+<option value="Apartment">Apartment</option>
+<option value="Villa">Villa</option>
+</select>
+<select id="budget">
+<option value="all">Any Budget</option>
+<option value="5000000">Below ₹50 Lakhs</option>
+<option value="10000000">Below ₹1 Crore</option>
+</select>
+<button onclick="searchHomes()">Search</button>
+</div>
+<p id="result"></p>
+<section id="properties">
+<h2 class="title">Featured Properties</h2>
+<div class="properties" id="homeList">
+<div class="card" data-city="vijayawada" data-kind="House" data-price="4500000">
+<img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=800&q=80" alt="Family house">
+<div class="info">
+<h3>Beautiful Family House</h3>
+<p>Location: Vijayawada</p>
+<p>3 Bedrooms | 2 Bathrooms</p>
+<p class="price">₹45,00,000</p>
+<button onclick="contactOwner('Beautiful Family House')">Contact Owner</button>
+</div>
+</div>
+<div class="card" data-city="hyderabad" data-kind="Apartment" data-price="6500000">
+<img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=800&q=80" alt="Modern apartment">
+<div class="info">
+<h3>Modern Apartment</h3>
+<p>Location: Hyderabad</p>
+<p>2 Bedrooms | 2 Bathrooms</p>
+<p class="price">₹65,00,000</p>
+<button onclick="contactOwner('Modern Apartment')">Contact Owner</button>
+</div>
+</div>
+<div class="card" data-city="guntur" data-kind="Villa" data-price="9500000">
+<img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=800&q=80" alt="Luxury villa">
+<div class="info">
+<h3>Luxury Villa</h3>
+<p>Location: Guntur</p>
+<p>4 Bedrooms | 3 Bathrooms</p>
+<p class="price">₹95,00,000</p>
+<button onclick="contactOwner('Luxury Villa')">Contact Owner</button>
+</div>
+</div>
+<div class="card" data-city="vijayawada" data-kind="Apartment" data-price="3500000">
+<img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=800&q=80" alt="Cozy apartment">
+<div class="info">
+<h3>Cozy Apartment</h3>
+<p>Location: Vijayawada</p>
+<p>2 Bedrooms | 1 Bathroom</p>
+<p class="price">₹35,00,000</p>
+<button onclick="contactOwner('Cozy Apartment')">Contact Owner</button>
+</div>
+</div>
+<div class="card" data-city="hyderabad" data-kind="House" data-price="4800000">
+<img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" alt="Independent home">
+<div class="info">
+<h3>Independent Home</h3>
+<p>Location: Hyderabad</p>
+<p>3 Bedrooms | 2 Bathrooms</p>
+<p class="price">₹48,00,000</p>
+<button onclick="contactOwner('Independent Home')">Contact Owner</button>
+</div>
+</div>
+<div class="card" data-city="guntur" data-kind="House" data-price="2800000">
+<img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=800&q=80" alt="Small house">
+<div class="info">
+<h3>Budget Home</h3>
+<p>Location: Guntur</p>
+<p>2 Bedrooms | 1 Bathroom</p>
+<p class="price">₹28,00,000</p>
+<button onclick="contactOwner('Budget Home')">Contact Owner</button>
+</div>
+</div>
+</div>
+</section>
+<section class="about" id="about">
+<h2 class="title">About Dream Estate</h2>
+<p>Dream Estate helps people discover houses, apartments, and villas.</p>
+<p>Our goal is to make property searching easy and convenient.</p>
+</section>
+<section class="contact" id="contact">
+<h2 class="title">Contact Us</h2>
+<p>Email: dreamestate@example.com</p>
+<p>Phone: +91 98765 43210</p>
+<p>Address: Vijayawada, Andhra Pradesh</p>
+</section>
+<footer>
+<p>&copy; 2026 Dream Estate. All rights reserved.</p>
+<p>Your dream home starts here!</p>
+</footer>
+<script>
+function searchHomes() {
+let city = document.getElementById("city").value.toLowerCase().trim();
+let kind = document.getElementById("kind").value;
+let budget = document.getElementById("budget").value;
+let cards = document.querySelectorAll(".card");
+let count = 0;
+cards.forEach(function(card) {
+let location = card.dataset.city;
+let type = card.dataset.kind;
+let price = Number(card.dataset.price);
+let cityMatch = city === "" || location.includes(city);
+let typeMatch = kind === "all" || type === kind;
+let priceMatch = budget === "all" || price < Number(budget);
+if (cityMatch && typeMatch && priceMatch) {
+card.style.display = "block";
+count++;
+} else {
+card.style.display = "none";
+}
+});
+document.getElementById("result").textContent = count + " properties found.";
+}
+function contactOwner(name) {
+alert("You selected " + name + ". Please contact our office for details.");
+}
+</script>
+</body>
+</html>
