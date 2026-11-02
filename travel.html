@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Explore India Travel Portal</title>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f8fb;
+    color: #333;
+}
+header {
+    background: #073b4c;
+    color: white;
+    padding: 20px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+header h1 { font-size: 27px; }
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 10px;
+}
+nav a:hover { color: #ffd166; }
+.hero {
+    min-height: 350px;
+    background: linear-gradient(#0005,#0005),
+    url("https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1400&q=80") center/cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    padding: 25px;
+}
+.hero h2 { font-size: 38px; margin-bottom: 15px; }
+.hero p { margin-bottom: 20px; }
+button {
+    padding: 11px 18px;
+    background: #ffd166;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+button:hover { background: #f4b942; }
+section { padding: 35px 7%; }
+.title {
+    text-align: center;
+    color: #073b4c;
+    margin-bottom: 25px;
+}
+.destinations, .packages {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+.card {
+    background: white;
+    border-radius: 9px;
+    overflow: hidden;
+    box-shadow: 0 3px 12px #0002;
+    transition: 0.3s;
+}
+.card:hover { transform: translateY(-5px); }
+.card img {
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+}
+.content { padding: 18px; }
+.content h3 { color: #073b4c; margin-bottom: 10px; }
+.content p { margin: 8px 0; }
+.price {
+    color: #138a55;
+    font-size: 21px;
+    font-weight: bold;
+}
+.content button {
+    margin-top: 10px;
+    width: 100%;
+}
+.packages-section { background: #e8f3f5; }
+.itinerary {
+    background: white;
+    margin: 12px auto;
+    padding: 17px;
+    max-width: 800px;
+    border-left: 5px solid #118ab2;
+    border-radius: 5px;
+}
+.itinerary h3 { color: #073b4c; }
+.form-section { background: #e8f3f5; }
+form {
+    max-width: 650px;
+    margin: auto;
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+}
+label {
+    display: block;
+    margin: 12px 0 5px;
+    font-weight: bold;
+}
+input, select, textarea {
+    width: 100%;
+    padding: 11px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+textarea { height: 85px; resize: vertical; }
+form button { width: 100%; margin-top: 18px; }
+#result {
+    text-align: center;
+    color: #138a55;
+    margin-top: 15px;
+}
+footer {
+    background: #073b4c;
+    color: white;
+    text-align: center;
+    padding: 22px;
+}
+@media(max-width: 800px) {
+    .destinations, .packages {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    header { justify-content: center; gap: 12px; }
+    .hero h2 { font-size: 30px; }
+}
+@media(max-width: 550px) {
+    .destinations, .packages { grid-template-columns: 1fr; }
+    nav { text-align: center; }
+    nav a { display: inline-block; }
+    .hero h2 { font-size: 26px; }
+}
+</style>
+</head>
+<body>
+<header>
+<h1>Explore India</h1>
+<nav>
+<a href="#home">Home</a>
+<a href="#destinations">Destinations</a>
+<a href="#packages">Packages</a>
+<a href="#itinerary">Itinerary</a>
+<a href="#contact">Contact</a>
+</nav>
+</header>
+<section class="hero" id="home">
+<h2>Your Journey Begins Here</h2>
+<p>Discover beautiful destinations and unforgettable holidays.</p>
+<a href="#packages"><button>Explore Packages</button></a>
+</section>
+<section id="destinations">
+<h2 class="title">Popular Destinations</h2>
+<div class="destinations">
+<div class="card">
+<img src="https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=700&q=80" alt="Kerala">
+<div class="content">
+<h3>Kerala</h3>
+<p>Enjoy green landscapes and peaceful backwaters.</p>
+<p>Best for: Nature lovers</p>
+</div></div>
+<div class="card">
+<img src="https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=700&q=80" alt="Goa">
+<div class="content">
+<h3>Goa</h3>
+<p>Explore beaches and beautiful coastal scenery.</p>
+<p>Best for: Beach holidays</p>
+</div></div>
+<div class="card">
+<img src="https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=700&q=80" alt="Manali">
+<div class="content">
+<h3>Manali</h3>
+<p>Experience mountains, valleys, and fresh air.</p>
+<p>Best for: Mountain trips</p>
+</div></div>
+</div>
+</section>
+<section class="packages-section" id="packages">
+<h2 class="title">Holiday Packages</h2>
+<div class="packages">
+<div class="card">
+<img src="https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=700&q=80" alt="Kerala tour">
+<div class="content">
+<h3>Kerala Tour</h3>
+<p>Duration: 4 Days / 3 Nights</p>
+<p>Includes sightseeing and hotel stay.</p>
+<p class="price">₹12,000</p>
+<button onclick="chooseTrip('Kerala')">Select Package</button>
+</div></div>
+<div class="card">
+<img src="https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=700&q=80" alt="Goa tour">
+<div class="content">
+<h3>Goa Holiday</h3>
+<p>Duration: 3 Days / 2 Nights</p>
+<p>Includes beach visits and sightseeing.</p>
+<p class="price">₹9,000</p>
+<button onclick="chooseTrip('Goa')">Select Package</button>
+</div></div>
+<div class="card">
+<img src="https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=700&q=80" alt="Manali tour">
+<div class="content">
+<h3>Manali Adventure</h3>
+<p>Duration: 5 Days / 4 Nights</p>
+<p>Includes mountain sightseeing and hotel stay.</p>
+<p class="price">₹16,000</p>
+<button onclick="chooseTrip('Manali')">Select Package</button>
+</div></div>
+</div>
+</section>
+<section id="itinerary">
+<h2 class="title">Sample Itinerary: Goa</h2>
+<div class="itinerary">
+<h3>Day 1: Arrival</h3>
+<p>Check into the hotel and visit a nearby beach.</p>
+</div>
+<div class="itinerary">
+<h3>Day 2: Sightseeing</h3>
+<p>Explore local markets and popular attractions.</p>
+</div>
+<div class="itinerary">
+<h3>Day 3: Departure</h3>
+<p>Enjoy breakfast, shop for souvenirs, and return home.</p>
+</div>
+</section>
+<section class="form-section" id="contact">
+<h2 class="title">Travel Inquiry Form</h2>
+<form id="travelForm">
+<label for="name">Full Name</label>
+<input type="text" id="name" required placeholder="Enter your name">
+<label for="email">Email Address</label>
+<input type="email" id="email" required placeholder="Enter your email">
+<label for="destination">Destination</label>
+<select id="destination" required>
+<option value="">Select destination</option>
+<option>Kerala</option>
+<option>Goa</option>
+<option>Manali</option>
+</select>
+<label for="date">Travel Date</label>
+<input type="date" id="date" required>
+<label for="people">Number of Travellers</label>
+<input type="number" id="people" min="1" value="1" required>
+<label for="notes">Additional Requirements</label>
+<textarea id="notes" placeholder="Enter your preferences"></textarea>
+<button type="submit">Submit Inquiry</button>
+<p id="result"></p>
+</form>
+</section>
+<footer>
+<p>&copy; 2026 Explore India Travel Portal</p>
+<p>Discover More. Travel Happy.</p>
+</footer>
+<script>
+function chooseTrip(destination) {
+    document.getElementById("destination").value = destination;
+    document.getElementById("contact").scrollIntoView({
+        behavior: "smooth"
+    });
+}
+document.getElementById("travelForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+    const name = document.getElementById("name").value;
+    const destination = document.getElementById("destination").value;
+    document.getElementById("result").textContent =
+        "Thank you, " + name + "! Your " + destination +
+        " inquiry has been recorded in this demo.";
+    this.reset();
+});
+</script>
+</body>
+</html>
